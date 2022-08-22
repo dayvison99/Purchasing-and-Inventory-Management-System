@@ -1,0 +1,51 @@
+[09-Aug-2018 14:42:42 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[09-Aug-2018 14:43:18 UTC] PHP Fatal error:  Uncaught Error: Class 'SoapClient' not found in /home/canti997/public_html/lj/GetEstoque.php:2
+Stack trace:
+#0 /home/canti997/public_html/lj/index.php(14): require_once()
+#1 {main}
+  thrown in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[09-Aug-2018 14:43:35 UTC] PHP Fatal error:  Uncaught Error: Class 'SoapClient' not found in /home/canti997/public_html/lj/GetEstoque.php:2
+Stack trace:
+#0 /home/canti997/public_html/lj/index.php(14): require_once()
+#1 {main}
+  thrown in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[09-Aug-2018 14:43:37 UTC] PHP Fatal error:  Uncaught Error: Class 'SoapClient' not found in /home/canti997/public_html/lj/GetEstoque.php:2
+Stack trace:
+#0 /home/canti997/public_html/lj/index.php(14): require_once()
+#1 {main}
+  thrown in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[09-Aug-2018 14:45:52 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[09-Aug-2018 14:47:31 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[09-Aug-2018 14:47:34 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[09-Aug-2018 15:00:45 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[09-Aug-2018 15:04:57 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[09-Aug-2018 15:07:06 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[09-Aug-2018 19:07:37 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[09-Aug-2018 19:08:32 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[10-Aug-2018 20:11:21 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[11-Aug-2018 12:40:35 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[11-Aug-2018 12:52:26 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[11-Aug-2018 12:52:59 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[11-Aug-2018 13:53:45 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[03-Sep-2018 13:20:40 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[11-Sep-2018 12:26:00 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[17-Sep-2018 11:19:01 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
+[09-Nov-2018 16:57:22 UTC] PHP Fatal error:  SOAP-ERROR: Parsing WSDL: Couldn't load from 'http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl' : failed to load external entity "http://31.170.161.233:8080/wsdl/IServidorWSEstoq?wsdl"
+ in /home/canti997/public_html/lj/GetEstoque.php on line 2
