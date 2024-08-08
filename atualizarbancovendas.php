@@ -2,65 +2,78 @@
 <?php
     require("layout/topo.php");
     require("layout/menu.php");
-
-?>
-
-
-<?php
 if(!isset($_SESSION)){
         session_start();
       }
 
 include_once("conexao.php");
 
-
 $cidade = strtoupper($_POST["cidade"]) ;
-$grupo = strtoupper($_POST["grupo"]);
-$subgrupo1 = strtoupper($_POST["subgrupo"]);
-$opcao = $_POST["opcao"];
+$dateinicial = strtoupper($_POST["dateinicial"]);
+$datefinal = strtoupper($_POST["datefinal"]);
 
-$_SESSION['grupoconferir'] = $grupo;
+$_SESSION['dateinicial'] = $dateinicial;
 $_SESSION['cidadeconferir'] = $cidade;
+$_SESSION['datefinal'] = $datefinal;
+$usuario = $_SESSION['UsuarioID'];
 
-
-//Instalar a extensão SOAP no php
-//1º Localize o arquivo php.ini na pasta bin do apache: apache/bin/php.ini
-//2º Remover o ‘;‘ do início de extension=php_soap.dll
-//3º Reinicie o servidor http
-<?php
-//Instalar a extensão SOAP no php
-//1º Localize o arquivo php.ini na pasta bin do apache: apache/bin/php.ini
-//2º Remover o ‘;‘ do início de extension=php_soap.dll
-//3º Reinicie o servidor http
     try{
-        require_once 'GetGrupo.php';
-
-        echo '<h1>ESTOQUE DOS PRODUTOS</h1>';
-        echo '<hr>';
-        echo '<h3>Texto em formato Json</h3>';
-
-        print_r($result);
-
-        echo '<hr>';
-        echo '<h3>Texto decodificado</h3>';
+        require_once 'GetDadosVendas.php';
+        require_once 'GetDadosClientes.php';
         // Atribui o conteúdo do resultado para variável $arquivo
-        $arquivo = $result;
+        $vendas = $resultvendas;
+        $clientes = $resultclientes;
+        $jsonvendas = json_decode($vendas);
+        $jsonclientes = json_decode($clientes);
 
-        // Decodifica o formato JSON e retorna um Objeto
-        $json = json_decode($arquivo);
+        $resultvendas = "DELETE FROM `vendas` WHERE empresa = $cidade";
+        $queryresultvendas = mysqli_query($con, $resultvendas);
+        $zerarvendas = "ALTER TABLE `vendas` AUTO_INCREMENT=1";
+        $queryresultproduto = mysqli_query($con, $zerarvendas);
 
         // Loop para percorrer o Objeto
-        foreach($json->LJSISTEMAS as $arquivo):
-            echo 'Empresa: ' . $arquivo->EMPRESA.' ';
-            #echo 'Cod.Produto: ' . $arquivo->GRUPOCONTADOR.' ';
-            #echo 'Estoque: ' .$arquivo->ESTOQUE .'<br>';
-        endforeach;
+        //grupo
 
-        require_once 'SetStatussf.php';
+        foreach($jsonvendas->LJSISTEMAS as $vendas):
+            $empresa    = $vendas->EMPRESA;
+            $codcliente = $vendas->CLIENTE;
+            $totalvenda = $vendas->TOTVENDA;
+            $datavenda  = date('Y-m-d', strtotime(str_replace("/", "-", $vendas->DTVENDA)));
+
+            $resultvendassalvar = "INSERT INTO vendas(`idcliente`,`datavenda`,`valor`,`empresa`,`usuario`) VALUES ('$codcliente','$datavenda','$totalvenda','$empresa','$usuario')";
+            $queryresultprodutojn = mysqli_query($con, $resultvendassalvar);
+
+            if ($resultvendassalvar == FALSE ){
+               echo "Erro na atualização dos Dados";
+               echo "</br>";
+            }
+          endforeach;
+          if($jsonclientes){
+            foreach($jsonclientes->LJSISTEMAS as $clientes):
+                $empresa    = $clientes->EMPRESA;
+                $codcliente = $clientes->CLICONTADOR;
+                $nome       = $clientes->NOME;
+                $celular    = $clientes->CELULAR;
+                $celular2   = $clientes->CELULAR2;
+                $celular3   = $clientes->CELULAR3;
+                $telefone   = $clientes->FONE;
+                $dtcadastro = date('Y-m-d', strtotime(str_replace("/", "-", $clientes->DTCADASTRO)));
+                $dtaniversario = date('Y-m-d', strtotime(str_replace("/", "-", $clientes->DTNASC)));
+
+                $resultvendassalvar = "INSERT INTO clientes(`nome`,`celular`,`telefone`,`celular2`,`celular3`,`empresa`,`codcliente`,`dtcadastro`,`dtaniversario`) VALUES ('$nome','$celular','$telefone','$celular2','$celular3','$empresa','$codcliente','$dtcadastro','  $dtaniversario')";
+                $queryresultprodutojn = mysqli_query($con, $resultvendassalvar);
+
+                if ($resultvendassalvar == FALSE ){
+                   echo "Erro na atualização dos Dados";
+                   echo "</br>";
+                }
+              endforeach;
+          }
+
+    require_once 'lj/SetStatus.php';
     } catch (Exception $e) {
         echo 'Erro ao conectar com o servidor! ';//,  $e->getMessage(), "\n";
     }
-?>
 
 ?>
     <!-- Begin Page Content -->
@@ -110,7 +123,7 @@ $_SESSION['cidadeconferir'] = $cidade;
 
        </tr>
        <tr>
-       <th colspan="1"><center><b>  <a href="leitorbm.php" id="jn"><i class="ion-help"></i> <button type="button" class="btn btn-primary">Continuar</button></a></li></b></center></th>
+       <th colspan="1"><center><b>  <a href="resultadovendasclientes.php" id="jn"><i class="ion-help"></i> <button type="button" class="btn btn-primary">Continuar</button></a></li></b></center></th>
      </tr>
      </table>
  </div>

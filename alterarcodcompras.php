@@ -34,9 +34,12 @@
                                     $sql = "SELECT t.codproduto as tcodigo,t.descricao as tnome, t.quantidade as tentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto as lcodigo,count(l.codproduto) as lqtde FROM est004 as e right  JOIN leitorcomprassf as l ON l.codproduto = e.CODPRODUTO inner JOIN comprassf as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 and l.id = $tmpString group by e.descproduto  UNION SELECT t.codproduto as codigo,t.descricao as tnome, t.quantidade as qtdeentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto,count(l.codproduto) as Qtde FROM est004 as e left  JOIN leitorcomprassf as l ON l.codproduto = e.CODPRODUTO left JOIN comprassf as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 and l.id = $tmpString  group by e.descproduto  ";
                              }
                            if ($_SESSION['empresa'] == "5"){
-                                     $sql = "SELECT t.codproduto as tcodigo,t.descricao as tnome, t.quantidade as tentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto as lcodigo,count(l.codproduto) as lqtde FROM est004 as e right  JOIN leitorcomprasbm as l ON l.codproduto = e.CODPRODUTO inner JOIN comprasbm as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 and l.id = $tmpString group by e.descproduto  UNION SELECT t.codproduto as codigo,t.descricao as tnome, t.quantidade as qtdeentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto,count(l.codproduto) as Qtde FROM est004 as e left  JOIN leitorcomprasbm as l ON l.codproduto = e.CODPRODUTO left JOIN comprasbm as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 and l.id = $tmpString  group by e.descproduto  ";
-                              }
-
+                                    $sql = "SELECT t.codproduto as tcodigo,t.descricao as tnome, t.quantidade as tentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto as lcodigo,count(l.codproduto) as lqtde FROM est004 as e right  JOIN leitorcomprasbm as l ON l.codproduto = e.CODPRODUTO inner JOIN comprasbm as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 and l.id = $tmpString group by e.descproduto  UNION SELECT t.codproduto as codigo,t.descricao as tnome, t.quantidade as qtdeentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto,count(l.codproduto) as Qtde FROM est004 as e left  JOIN leitorcomprasbm as l ON l.codproduto = e.CODPRODUTO left JOIN comprasbm as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 and l.id = $tmpString  group by e.descproduto  ";
+                           }
+                           if ($_SESSION['empresa'] == "6"){
+                               $sql = "SELECT t.codproduto as tcodigo,t.descricao as tnome, t.quantidade as tentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto as lcodigo,count(l.codproduto) as lqtde FROM est004 as e right  JOIN leitorcomprasmaimai as l ON l.codproduto = e.CODPRODUTO inner JOIN comprasmaimai as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 and l.id = $tmpString group by e.descproduto  UNION SELECT t.codproduto as codigo,t.descricao as tnome, t.quantidade as qtdeentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto,count(l.codproduto) as Qtde FROM est004 as e left  JOIN leitorcomprasbm as l ON l.codproduto = e.CODPRODUTO left JOIN comprasbm as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 and l.id = $tmpString  group by e.descproduto  ";
+                           }    
+                           
                            $result = mysqli_query($con, $sql);
 
                           # $sql = "SELECT * FROM leitor2 where id = $tmpString";
@@ -107,7 +110,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Cantinho  2021</span>
+                        <span>Copyright &copy; Cantinho  2024</span>
                     </div>
                 </div>
             </footer>

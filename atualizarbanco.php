@@ -26,7 +26,8 @@ include_once("conexao.php");
         require_once 'lj/GetSubGrupos.php';
         require_once 'lj/GetDadosProdutosjn.php';
         require_once 'lj/GetDadosProdutossf.php';
-        require_once 'lj/GetDadosProdutosbm.php';
+        require_once 'lj/GetDadosProdutosbm.php'; 
+        require_once 'lj/GetDadosProdutosmaimai.php';
 
         // Atribui o conteúdo do resultado para variável $arquivo
         $grupo = $result;
@@ -36,6 +37,7 @@ include_once("conexao.php");
         $produtosjn = $resultprodutosjn;
         $produtossf = $resultprodutossf;
         $produtosbm = $resultprodutosbm;
+        $produtosmaimai = $resultprodutosmaimai;
 
         #print_r($resultmarcas);
 
@@ -48,6 +50,7 @@ include_once("conexao.php");
         $jsonprdutosjn = json_decode($produtosjn);
         $jsonprdutossf = json_decode($produtossf);
         $jsonprdutosbm = json_decode($produtosbm);
+        $jsonprdutosmaimai = json_decode($produtosmaimai);
 
 
          $result = "DELETE FROM `est002`";
@@ -70,7 +73,7 @@ include_once("conexao.php");
          $row = mysqli_fetch_assoc($queryultimoproduto);
          $ultimoproduto = $row['CODPRODUTO'];
 
-         $resultproduto = "DELETE FROM `est004` where CODPRODUTO >= 69998 ";
+         $resultproduto = "DELETE FROM `est004` where CODPRODUTO >= 96799 "; 
          $queryresultproduto = mysqli_query($con, $resultproduto);
          $zerarproduto = "ALTER TABLE `est004` AUTO_INCREMENT=1";
          $queryresultproduto = mysqli_query($con, $zerarproduto);
@@ -149,6 +152,21 @@ include_once("conexao.php");
 
           endforeach;
 
+          foreach($jsonprdutosmaimai->LJSISTEMAS as $produtos):
+            $empresa = $produtos->EMPRESA;
+            $codproduto = $produtos->CODPRODUTO;
+            $contaproduto = $codproduto/1;
+            $descricao = $produtos->DESCPRODUTO;
+            $grupo = $produtos->GRUPO;
+            $subgrupo = $produtos->SUBGRUPO;
+            $marca = $produtos->MARCA;
+
+
+            $resultprodutomaimai = "INSERT INTO est004(`EMPRESA`,`CODPRODUTO`,`CONTAPRODUTO`,`DESCPRODUTO`,`GRUPO`,`SUBGRUPO`,`MARCA`) VALUES ('$empresa','$codproduto','$contaproduto','$descricao','$grupo','$subgrupo','$marca')";
+            $queryresultprodutomaimai = mysqli_query($con, $resultprodutomaimai);
+
+          endforeach;
+
 
 
     require_once 'lj/SetStatus.php';
@@ -185,7 +203,7 @@ include_once("conexao.php");
        <th>
 
 <?php
-     if ($queryresult and $queryresultmarca and $queryresultsubgrupo and $queryresultprodutobm and $queryresultprodutojn and $queryresultprodutosf){
+     if ($queryresult and $queryresultmarca and $queryresultsubgrupo and $queryresultprodutobm and $queryresultprodutojn and $queryresultprodutosf  and $queryresultprodutomaimai){
          echo "Dados Atualizados com Sucesso !";
 
          ?>
@@ -230,7 +248,7 @@ include_once("conexao.php");
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Cantinho  2021</span>
+            <span>Copyright &copy; Cantinho  2024</span>
         </div>
     </div>
 </footer>

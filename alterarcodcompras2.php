@@ -35,11 +35,11 @@ while($row = mysqli_fetch_assoc($result)) {
                 $inserir = mysqli_query($con, $alter );
           }
           if ($_SESSION['empresa'] == "2"){
-                $alter = "DELETE FROM leitorcomprassf WHERE codproduto = $cod ";
+                $alter = "DELETE FROM leitorcomprassf WHERE codproduto = $cod and idusuario = $idusuario";
                 $inserir = mysqli_query($con, $alter );
           }
           if ($_SESSION['empresa'] == "5"){
-                $alter = "DELETE FROM leitorcomprasbm WHERE codproduto = $cod ";
+                $alter = "DELETE FROM leitorcomprasbm WHERE codproduto = $cod and idusuario = $idusuario";
                 $inserir = mysqli_query($con, $alter );
           }
         }
@@ -74,48 +74,49 @@ while ($qtde > $cont){
 
         }
         if ($_SESSION['empresa'] == "2"){
-            $result = mysqli_query($con,"SELECT * FROM comprassf");
+            $result = mysqli_query($con,"SELECT * FROM comprassf where idusuario = $idusuario");
             while($row = mysqli_fetch_assoc($result)) {
 
-              $resultaux = mysqli_query($con,"SELECT * FROM leitorcomprassf where codproduto = $cod ");
+              $resultaux = mysqli_query($con,"SELECT * FROM leitorcomprassf where codproduto = $cod and idusuario = $idusuario");
               while($aux = mysqli_fetch_assoc($resultaux)) {
-                    $alter = "UPDATE leitorcomprassf set quantidade = $quantidade + 1  where codproduto = $cod ";
+                    $alter = "UPDATE leitorcomprassf set quantidade = $quantidade + 1  where codproduto = $cod and idusuario = $idusuario";
 
               }
               $inserir = mysqli_query($con, $alter );
 
               if($row['codproduto'] == $cod ){
-                $leitor = "SELECT count(codproduto) as quantidade FROM leitorcomprassf where codproduto = $cod  group by codproduto ";
+                $leitor = "SELECT count(codproduto) as quantidade FROM leitorcomprassf where codproduto = $cod and idusuario = $idusuario group by codproduto ";
                 $leitorresult = mysqli_query($con, $leitor);
                 $leitor = mysqli_fetch_assoc($leitorresult);
                 $diferenca = $row['quantidade'];
                 $quantidade = $leitor['quantidade'] + 1;
 
-                $alter = "INSERT INTO leitorcomprassf (codproduto,diferenca,quantidade) VALUES ($cod,$diferenca,$quantidade)";
+                $alter = "INSERT INTO leitorcomprassf (codproduto,diferenca,quantidade,idusuario) VALUES ($cod,$diferenca,$quantidade,$idusuario)";
                 break;
               }
+              
           }
 
      }
         if ($_SESSION['empresa'] == "5"){
-        $result = mysqli_query($con,"SELECT * FROM comprasbm");
+        $result = mysqli_query($con,"SELECT * FROM comprasbm where idusuario = $idusuario");
         while($row = mysqli_fetch_assoc($result)) {
 
-          $resultaux = mysqli_query($con,"SELECT * FROM leitorcomprasbm where codproduto = $cod ");
+          $resultaux = mysqli_query($con,"SELECT * FROM leitorcomprasbm where codproduto = $cod and idusuario = $idusuario");
           while($aux = mysqli_fetch_assoc($resultaux)) {
-                $alter = "UPDATE leitorcomprasbm set quantidade = $quantidade + 1  where codproduto = $cod ";
+                $alter = "UPDATE leitorcomprasbm set quantidade = $quantidade + 1  where codproduto = $cod and idusuario = $idusuario ";
 
           }
             $inserir = mysqli_query($con, $alter );
 
           if($row['codproduto'] == $cod ){
-            $leitor = "SELECT count(codproduto) as quantidade FROM leitorcomprasbm where codproduto = $cod  group by codproduto ";
+            $leitor = "SELECT count(codproduto) as quantidade FROM leitorcomprasbm where codproduto = $cod and idusuario = $idusuario  group by codproduto ";
             $leitorresult = mysqli_query($con, $leitor);
             $leitor = mysqli_fetch_assoc($leitorresult);
             $diferenca = $row['quantidade'];
             $quantidade = $leitor['quantidade'] + 1;
 
-            $alter = "INSERT INTO leitorcomprasbm (codproduto,diferenca,quantidade) VALUES ($cod,$diferenca,$quantidade)";
+            $alter = "INSERT INTO leitorcomprasbm (codproduto,diferenca,quantidade,idusuario) VALUES ($cod,$diferenca,$quantidade,$idusuario)";
             break;
           }
       }
