@@ -32,31 +32,32 @@ include_once("conexao.php");
 <body id="page-top">
 
 <?php
+          $usuario = $_SESSION['UsuarioID'];
           if($_SESSION['empresa'] == 1){
-                 $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitorconferenciajn as l ON l.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by l.codproduto order by descricao  ";
+                 $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitorconferenciajn as l ON l.codproduto = e.CONTAPRODUTO where e.empresa = 1 and l.usuario = $usuario group by l.codproduto order by descricao  ";
                  $leitorresult = mysqli_query($con, $leitor);
 
-                 $sql = "SELECT e.codproduto as tcodigo,e.DESCPRODUTO as tnome, e.estoque as tentrada, l.id,l.codproduto as lcodigo,l.quantidade as lqtde FROM auxestoquejn as e left JOIN leitorconferenciajn as l ON l.codproduto = e.CONTAPRODUTO group by tcodigo ";
+                 $sql = "SELECT e.codproduto as tcodigo,e.DESCPRODUTO as tnome, e.estoque as tentrada, l.id,l.codproduto as lcodigo,l.quantidade as lqtde FROM auxestoquejn as e left JOIN leitorconferenciajn as l ON l.codproduto = e.CONTAPRODUTO  and l.usuario = $usuario where e.usuario = $usuario group by tcodigo ";
                  $result = mysqli_query($con, $sql);
 
                  $totalsistema = 0;
                  $totalleitor = 0;
         }
         if($_SESSION['empresa'] == 2){
-               $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitorconferenciasf as l ON l.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by l.codproduto order by descricao  ";
+               $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitorconferenciasf as l ON l.codproduto = e.CONTAPRODUTO where e.empresa = 1 and l.usuario = $usuario group by l.codproduto order by descricao  ";
                $leitorresult = mysqli_query($con, $leitor);
 
-               $sql = "SELECT e.codproduto as tcodigo,e.DESCPRODUTO as tnome, e.estoque as tentrada, l.id,l.codproduto as lcodigo,l.quantidade as lqtde FROM auxestoquesf as e left JOIN leitorconferenciasf as l ON l.codproduto = e.CONTAPRODUTO group by tcodigo ";
+               $sql = "SELECT e.codproduto as tcodigo,e.DESCPRODUTO as tnome, e.estoque as tentrada, l.id,l.codproduto as lcodigo,l.quantidade as lqtde FROM auxestoquesf as e left JOIN leitorconferenciasf as l ON l.codproduto = e.CONTAPRODUTO  and l.usuario = $usuario where e.usuario = $usuario group by tcodigo ";
                $result = mysqli_query($con, $sql);
 
                $totalsistema = 0;
                $totalleitor = 0;
       }
       if($_SESSION['empresa'] == 5){
-             $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitorconferenciabm as l ON l.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by l.codproduto order by descricao  ";
+             $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitorconferenciabm as l ON l.codproduto = e.CONTAPRODUTO where e.empresa = 1 and l.usuario = $usuario group by l.codproduto order by descricao  ";
              $leitorresult = mysqli_query($con, $leitor);
 
-             $sql = "SELECT e.codproduto as tcodigo,e.DESCPRODUTO as tnome, e.estoque as tentrada, l.id,l.codproduto as lcodigo,l.quantidade as lqtde FROM auxestoquebm as e left JOIN leitorconferenciabm as l ON l.codproduto = e.CONTAPRODUTO group by tcodigo ";
+             $sql = "SELECT e.codproduto as tcodigo,e.DESCPRODUTO as tnome, e.estoque as tentrada, l.id,l.codproduto as lcodigo,l.quantidade as lqtde FROM auxestoquebm as e left JOIN leitorconferenciabm as l ON l.codproduto = e.CONTAPRODUTO  and l.usuario = $usuario where e.usuario = $usuario group by tcodigo ";
              $result = mysqli_query($con, $sql);
 
              $totalsistema = 0;
@@ -79,7 +80,7 @@ include_once("conexao.php");
               <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="marca" required>
                         <option disabled selected></option>
                   <?php
-                        $var = 38;
+                        $var = $_SESSION['grupoconferir'];
                         $query = $con->query("SELECT * FROM est002 where GRUPOCONTADOR = $var order by DESCGRUPO");
 
 
@@ -96,7 +97,7 @@ include_once("conexao.php");
               <select class="form-control form-control-sm" id="exampleFormControlSelect1" name="marca" required>
                         <option disabled selected></option>
                   <?php
-                            $cod = 2;
+                            $cod = $_SESSION['cidadeconferir'];
                             $query = $con->query("SELECT * FROM empresa where cod = $cod");
 
                             while($reg = $query->fetch_array())

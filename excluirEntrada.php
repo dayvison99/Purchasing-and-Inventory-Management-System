@@ -17,7 +17,7 @@
                       if ($_SESSION['empresa'] == "1"){
                         $result = mysqli_query($con,"SELECT * FROM comprasjn");
 
-                            
+
                               $result = "DELETE FROM `comprasjn` where idusuario = $idusuario";
                               $queryresult = mysqli_query($con, $result);
                               $excluir = "DELETE FROM `leitorcomprasjn` where idusuario = $idusuario";
@@ -36,9 +36,9 @@
 
                         if ($_SESSION['empresa'] == "2"){
                                 include_once("conexao.php");
-                                $result = "DELETE FROM `comprassf`";
+                                $result = "DELETE FROM `comprassf` where idusuario = $idusuario";
                                 $queryresult = mysqli_query($con, $result);
-                                $excluir = "DELETE FROM `leitorcomprassf`";
+                                $excluir = "DELETE FROM `leitorcomprassf` where idusuario = $idusuario";
                                 $queryexcluir = mysqli_query($con, $excluir);
                                 if ($queryresult){
                                           $zerar = "ALTER TABLE `comprassf` AUTO_INCREMENT=1";
@@ -52,9 +52,9 @@
                                         }
                         if ($_SESSION['empresa'] == "5"){
                               include_once("conexao.php");
-                              $result = "DELETE FROM `comprasbm`";
+                              $result = "DELETE FROM `comprasbm` where idusuario = $idusuario";
                               $queryresult = mysqli_query($con, $result);
-                              $excluir = "DELETE FROM `leitorcomprasbm`";
+                              $excluir = "DELETE FROM `leitorcomprasbm` where idusuario = $idusuario";
                               $queryexcluir = mysqli_query($con, $excluir);
                               if ($queryresult){
                                          $zerar = "ALTER TABLE `comprasbm` AUTO_INCREMENT=1";
@@ -66,6 +66,22 @@
                                           echo "Erro na exclusão";
                                       }
                                       }
+                        if ($_SESSION['empresa'] == "6"){
+                                        include_once("conexao.php");
+                                        $result = "DELETE FROM `comprasmaimai` where idusuario = $idusuario";
+                                        $queryresult = mysqli_query($con, $result);
+                                        $excluir = "DELETE FROM `leitorcomprasmaimai` where idusuario = $idusuario";
+                                        $queryexcluir = mysqli_query($con, $excluir);
+                                        if ($queryresult){
+                                                   $zerar = "ALTER TABLE `comprasmaimai` AUTO_INCREMENT=1";
+                                                   $queryresult = mysqli_query($con, $zerar);
+                                                   $zerar1 = "ALTER TABLE `leitorcomprasmaimai AUTO_INCREMENT=1";
+                                                   $queryresult = mysqli_query($con, $zerar1);
+                                                   echo "Dados Excluídos com Sucesso";
+                                        }else{
+                                                    echo "Erro na exclusão";
+                                                }
+                                                }              
                         else {
                           echo "we";
                         }
@@ -90,7 +106,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Cantinho  2021</span>
+                        <span>Copyright &copy; Cantinho  2024</span>
                     </div>
                 </div>
             </footer>

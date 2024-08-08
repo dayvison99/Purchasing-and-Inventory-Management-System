@@ -59,12 +59,14 @@
                                       $result = "INSERT INTO transferenciasf(`codproduto`, `nome`, `marca`, `quantidadeSaida`, `quantidadeEntrada`) VALUES ('$codproduto','$nome','$marca','$quantidadeSaida','$quantidadeEntrada')";
                                   if ($_SESSION['empresa'] == "5")
                                       $result = "INSERT INTO transferenciabm(`codproduto`, `nome`, `marca`, `quantidadeSaida`, `quantidadeEntrada`) VALUES ('$codproduto','$nome','$marca','$quantidadeSaida','$quantidadeEntrada')";
+                                  if ($_SESSION['empresa'] == "6")
+                                      $result = "INSERT INTO transferenciamaimai(`codproduto`, `nome`, `marca`, `quantidadeSaida`, `quantidadeEntrada`) VALUES ('$codproduto','$nome','$marca','$quantidadeSaida','$quantidadeEntrada')";
 
                                   $queryresult = mysqli_query($con, $result);
 
                                   }
                                 }
-                                  if ($queryresult){
+                                  if (isset($queryresult)){
                                       echo "Dados Atualizados com Sucesso";
 
                                   }else{
@@ -99,7 +101,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Cantinho  2021</span>
+                        <span>Copyright &copy; Cantinho  2024</span>
                     </div>
                 </div>
             </footer>

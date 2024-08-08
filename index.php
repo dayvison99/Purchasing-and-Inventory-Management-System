@@ -47,7 +47,7 @@ include_once("conexao.php");
       <form class="form-signin" method="POST" action="valida_login.php" >
 	  	<h2 class="form-signin-heading"><img src="img/Cantinho-da-Cegonha.png" height="80%" width="80%"> </h2>
 
-        <h3 class="form-signin-heading"><center>Gestão de Estoque </h3></center>
+        <h3 class="form-signin-heading"><center>Sistema De Gestão de Estoque e Compras </h3></center>
 
 
 	    <label for="inputEmail" class="sr-only">Usuário </label>

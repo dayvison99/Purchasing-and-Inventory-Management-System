@@ -46,6 +46,21 @@
                                         echo "Erro na exclusão";
                                 }
                           }
+                          if ($_SESSION['empresa'] == "6"){
+                            $result = "DELETE FROM `transferenciamaimai`";
+                            $queryresult = mysqli_query($con, $result);
+                            $excluir = "DELETE FROM `leitortransferenciamaimai`";
+                            $queryexcluir = mysqli_query($con, $excluir);
+                            if ($queryresult){
+                                        $zerar = "ALTER TABLE `transferenciamaimai` AUTO_INCREMENT=1";
+                                        $queryresult = mysqli_query($con, $zerar);
+                                        $zerar1 = "ALTER TABLE `leitortransferenciamaimai` AUTO_INCREMENT=1";
+                                        $queryresult = mysqli_query($con, $zerar1);
+                                        echo "Dados Excluídos com Sucesso";
+                            }else{
+                                        echo "Erro na exclusão";
+                                }
+                          }
                           if ($_SESSION['empresa'] == "2"){
                               $result = "DELETE FROM `transferenciasf`";
                               $queryresult = mysqli_query($con, $result);
@@ -82,7 +97,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Cantinho  2021</span>
+                        <span>Copyright &copy; Cantinho  2024</span>
                     </div>
                 </div>
             </footer>

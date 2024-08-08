@@ -22,7 +22,7 @@
                                         </div>
                                         <?php
 
-                                             $sql = "SELECT * FROM salvarconferencia";
+                                             $sql = "SELECT * FROM salvarconferencia order by substr(data,7,4) desc,substr(data,1,2) desc ";
                                              $result = mysqli_query($con, $sql);
 
 
@@ -91,7 +91,7 @@
                                                     echo "<td>" .$row['usuario'];"</td>";
                                                     $date = $row['data'];
                                                     $date = str_replace("/", "-", $date);
-                                                    echo "<td>" .date("Y-m-d", strtotime($date));"</td>";
+                                                    echo "<td>" .date("d-m-Y", strtotime($date));"</td>";
                                                     echo "<td>" .$row['sistema'];"</td>";
                                                     echo "<td>" .$row['leitor'];"</td>";
                                                     echo "<td>" .$row['diferenca'];"</td>";
@@ -122,7 +122,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Cantinho  2021</span>
+                        <span>Copyright &copy; Cantinho  2024</span>
                     </div>
                 </div>
             </footer>

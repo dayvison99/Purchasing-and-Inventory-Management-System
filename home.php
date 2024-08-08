@@ -8,11 +8,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h4>Acesso Rápido </h4>
-                    </div>
 
-                        <p/>
 
             <!-- Estilo dos botoes-->
             <style>
@@ -32,6 +28,7 @@
 
                    <?php
                      if ($_SESSION['permissao'] == "administrador" or $_SESSION['permissao'] == "root"){?>
+
                    <tr class="tr_icone_painel">
 
                      <td class="td_icone_painel" subId="5">
@@ -584,7 +581,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Cantinho  2021</span>
+                        <span>Copyright &copy; Cantinho  2024</span>
                     </div>
                 </div>
             </footer>

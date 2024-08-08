@@ -4,12 +4,17 @@
     $grupo = strtoupper($_POST["grupo"]);
     $subgrupo = strtoupper($_POST["subgrupo"]);
     $opcao = $_POST["opcao"];
-    #$_SESSION['cidadeestoque'] = $cidade;
+
+    $querysubgrupo = "";
+    if ($subgrupo > 0)
+      $querysubgrupo = " and SUBGRUPO = ".$subgrupo;
+
+    //$_SESSION['cidadeestoque'] = $cidade;
 
     $client = new SoapClient ('http://situacaoacademica.ddns.net:8090/wsdl/IServidorWSEstoq?wsdl');
     $function = 'GetDadosProdutos';
     $arguments= array('pEmpresa'   => $cidade,
-                      'pFiltros'   => 'GRUPO = '.$grupo.'',//Filtro SQL (pode ficar em branco)
+                      'pFiltros'   => 'GRUPO = '.$grupo.$querysubgrupo,//Filtro SQL (pode ficar em branco)
                       'pUsuario'   => 'DAYVISON',//Nome do usuário de acesso ao sistema
                       'pSenha'     => '199214',//Senha do usuário de acesso ao sistema
                       'pConexao'   => 'situacaoacademica.ddns.net:8090, WEBSERVICE'//IP SERVIDOR, WEBSERVICE

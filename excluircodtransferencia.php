@@ -23,6 +23,12 @@ $excluir  = $_GET['tmpString'];
       $inserir = mysqli_query($con, $user);
   }
 
+  if ($_SESSION['empresa'] == "6"){
+    $user = "DELETE FROM leitortransferenciamaimai WHERE id = $excluir";
+    $inserir = mysqli_query($con, $user);
+}
+
+
 
 if($user == FALSE) {
       // Mensagem de erro quando os dados são inválidos e/ou o usuário não foi encontrado

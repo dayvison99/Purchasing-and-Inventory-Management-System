@@ -41,13 +41,13 @@ include_once("conexao.php");
 
   <?php
       if ($_SESSION['empresa'] == "1"){
-       $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitortransferenciajn as l ON l.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by l.codproduto order by descricao  ";
+       $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitortransferenciajn as l ON l.codproduto = e.CODPRODUTO where e.empresa = 1 group by l.codproduto order by descricao  ";
        $leitorresult = mysqli_query($con, $leitor);
 
-       $transferencia = "SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as entrada, t.quantidadeSaida as saida, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto FROM transferenciajn as t LEFT OUTER JOIN est004 as e ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by e.DESCPRODUTO order by tnome ";
+       $transferencia = "SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as entrada, t.quantidadeSaida as saida, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto FROM transferenciajn as t LEFT OUTER JOIN est004 as e ON t.codproduto = e.CODPRODUTO where e.empresa = 1 group by e.DESCPRODUTO order by tnome ";
        $transferenciaresult = mysqli_query($con, $transferencia);
 
-       $sql = "SELECT t.codproduto as tcodigo,t.nome as tnome, t.quantidadeEntrada as tentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto as lcodigo,count(l.codproduto) as lqtde FROM est004 as e right  JOIN leitortransferenciajn as l ON l.codproduto = e.CODPRODUTO inner JOIN transferenciajn as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  UNION SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as qtdeentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto,count(l.codproduto) as Qtde FROM est004 as e left  JOIN leitortransferenciajn as l ON l.codproduto = e.CODPRODUTO left JOIN transferenciajn as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  ";
+       $sql = "SELECT t.codproduto as tcodigo,t.nome as tnome, t.quantidadeEntrada as tentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto as lcodigo,count(l.codproduto) as lqtde FROM est004 as e right  JOIN leitortransferenciajn as l ON l.codproduto = e.CODPRODUTO inner JOIN transferenciajn as t ON t.codproduto = e.CODPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  UNION SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as qtdeentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto,count(l.codproduto) as Qtde FROM est004 as e left  JOIN leitortransferenciajn as l ON l.codproduto = e.CODPRODUTO left JOIN transferenciajn as t ON t.codproduto = e.CODPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  ";
        $result = mysqli_query($con, $sql);
 
 
@@ -56,13 +56,13 @@ include_once("conexao.php");
     }
 
     if ($_SESSION['empresa'] == "2"){
-     $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitortransferenciasf as l ON l.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by l.codproduto order by descricao  ";
+     $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitortransferenciasf as l ON l.codproduto = e.CODPRODUTO where e.empresa = 1 group by l.codproduto order by descricao  ";
      $leitorresult = mysqli_query($con, $leitor);
 
-     $transferencia = "SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as entrada, t.quantidadeSaida as saida, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto FROM transferenciasf as t LEFT OUTER JOIN est004 as e ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by e.DESCPRODUTO order by tnome ";
+     $transferencia = "SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as entrada, t.quantidadeSaida as saida, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto FROM transferenciasf as t LEFT OUTER JOIN est004 as e ON t.codproduto = e.CODPRODUTO where e.empresa = 1 group by e.DESCPRODUTO order by tnome ";
      $transferenciaresult = mysqli_query($con, $transferencia);
 
-     $sql = "SELECT t.codproduto as tcodigo,t.nome as tnome, t.quantidadeEntrada as tentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto as lcodigo,count(l.codproduto) as lqtde FROM est004 as e right  JOIN leitortransferenciasf as l ON l.codproduto = e.CODPRODUTO inner JOIN transferenciasf as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  UNION SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as qtdeentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto,count(l.codproduto) as Qtde FROM est004 as e left  JOIN leitortransferenciasf as l ON l.codproduto = e.CODPRODUTO left JOIN transferenciasf as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  ";
+     $sql = "SELECT t.codproduto as tcodigo,t.nome as tnome, t.quantidadeEntrada as tentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto as lcodigo,count(l.codproduto) as lqtde FROM est004 as e right  JOIN leitortransferenciasf as l ON l.codproduto = e.CODPRODUTO inner JOIN transferenciasf as t ON t.codproduto = e.CODPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  UNION SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as qtdeentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto,count(l.codproduto) as Qtde FROM est004 as e left  JOIN leitortransferenciasf as l ON l.codproduto = e.CODPRODUTO left JOIN transferenciasf as t ON t.codproduto = e.CODPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  ";
      $result = mysqli_query($con, $sql);
 
 
@@ -71,18 +71,32 @@ include_once("conexao.php");
   }
 
   if ($_SESSION['empresa'] == "5"){
-   $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitortransferenciabm as l ON l.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by l.codproduto order by descricao  ";
+   $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitortransferenciabm as l ON l.codproduto = e.CODPRODUTO where e.empresa = 1 group by l.codproduto order by descricao  ";
    $leitorresult = mysqli_query($con, $leitor);
 
-   $transferencia = "SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as entrada, t.quantidadeSaida as saida, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto FROM transferenciabm as t LEFT OUTER JOIN est004 as e ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by e.DESCPRODUTO order by tnome ";
+   $transferencia = "SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as entrada, t.quantidadeSaida as saida, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto FROM transferenciabm as t LEFT OUTER JOIN est004 as e ON t.codproduto = e.CODPRODUTO where e.empresa = 1 group by e.DESCPRODUTO order by tnome ";
    $transferenciaresult = mysqli_query($con, $transferencia);
 
-   $sql = "SELECT t.codproduto as tcodigo,t.nome as tnome, t.quantidadeEntrada as tentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto as lcodigo,count(l.codproduto) as lqtde FROM est004 as e right  JOIN leitortransferenciabm as l ON l.codproduto = e.CODPRODUTO inner JOIN transferenciabm as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  UNION SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as qtdeentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto,count(l.codproduto) as Qtde FROM est004 as e left  JOIN leitortransferenciabm as l ON l.codproduto = e.CODPRODUTO left JOIN transferenciabm as t ON t.codproduto = e.CONTAPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  ";
+   $sql = "SELECT t.codproduto as tcodigo,t.nome as tnome, t.quantidadeEntrada as tentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto as lcodigo,count(l.codproduto) as lqtde FROM est004 as e right  JOIN leitortransferenciabm as l ON l.codproduto = e.CODPRODUTO inner JOIN transferenciabm as t ON t.codproduto = e.CODPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  UNION SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as qtdeentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto,count(l.codproduto) as Qtde FROM est004 as e left  JOIN leitortransferenciabm as l ON l.codproduto = e.CODPRODUTO left JOIN transferenciabm as t ON t.codproduto = e.CODPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  ";
    $result = mysqli_query($con, $sql);
 
 
    $totalsistema = 0;
    $totalleitor = 0;
+}
+if ($_SESSION['empresa'] == "6"){
+  $leitor = "SELECT e.CODPRODUTO,e.CONTAPRODUTO,e.DESCPRODUTO as descricao, l.CODPRODUTO as codigo, count(l.codproduto) as quantidade FROM est004 as e INNER JOIN leitortransferenciamaimai as l ON l.codproduto = e.CODPRODUTO where e.empresa = 1 group by l.codproduto order by descricao  ";
+  $leitorresult = mysqli_query($con, $leitor);
+
+  $transferencia = "SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as entrada, t.quantidadeSaida as saida, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto FROM transferenciamaimai as t LEFT OUTER JOIN est004 as e ON t.codproduto = e.CODPRODUTO where e.empresa = 1 group by e.DESCPRODUTO order by tnome ";
+  $transferenciaresult = mysqli_query($con, $transferencia);
+
+  $sql = "SELECT t.codproduto as tcodigo,t.nome as tnome, t.quantidadeEntrada as tentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto as lcodigo,count(l.codproduto) as lqtde FROM est004 as e right  JOIN leitortransferenciamaimai as l ON l.codproduto = e.CODPRODUTO inner JOIN transferenciamaimai as t ON t.codproduto = e.CODPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  UNION SELECT t.codproduto as codigo,t.nome as tnome, t.quantidadeEntrada as qtdeentrada, e.codproduto,e.CONTAPRODUTO,e.empresa,e.descproduto as descproduto, l.id,l.codproduto,count(l.codproduto) as Qtde FROM est004 as e left  JOIN leitortransferenciamaimai as l ON l.codproduto = e.CODPRODUTO left JOIN transferenciabm as t ON t.codproduto = e.CODPRODUTO where e.empresa = 1 group by e.descproduto,e.codproduto  ";
+  $result = mysqli_query($con, $sql);
+
+
+  $totalsistema = 0;
+  $totalleitor = 0;
 }
   ?>
    <table class="table table-bordered table-dark">

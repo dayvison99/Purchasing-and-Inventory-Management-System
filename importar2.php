@@ -44,8 +44,12 @@
                                 while(($dados = fgetcsv($recebido,1000, ",")) !== FALSE)
                                 {
                                   $vazio = utf8_encode($dados[0]);
+
+                                  if ($vazio == 'ï»¿2')
+                                      $vazio = substr($vazio,6,7);
                                   if ($vazio == 1 or $vazio ==2 or $vazio ==5){
-                                  $empresa = utf8_encode($dados[0]);
+
+                                  $empresa =$vazio;
                                   $codproduto = utf8_encode($dados[1]);
                                   $descproduto = utf8_encode($dados[2]);
                                   $referencia = utf8_encode($dados[3]);
@@ -55,7 +59,26 @@
                                   $difmaxest = utf8_encode($dados[7]);
                                   $unidade = utf8_encode($dados[8]);
                                   $datacompra = utf8_encode($dados[9]);
-                                  $precofinal = utf8_encode($dados[10]);
+
+                                  if (isset($dados[10])) {
+                                      $precofinal = utf8_encode($dados[10]);
+                                  } else {
+                                      $precofinal = 0;
+                                  }
+
+
+                                  // if (!isset($dados[10]) && $dados[10] != '') {
+                                  //   $precofinal = utf8_encode($dados[10]) != '' || utf8_encode($dados[10]) != null  ? utf8_encode($dados[10]) : '';
+                                  // }
+
+                                  if($estaual == '')
+                                    $estaual = 0 ;
+                                  if($estminino == '')
+                                    $estminino = 0 ;
+                                  if($estmaximo == '')
+                                    $estmaximo = 0 ;
+                                  if($difmaxest == '')
+                                    $difmaxest = 0 ;
 
                                   $data_cadastro = date("d-m-Y");
                                   date('d-m-Y', strtotime('NOW()'));
@@ -105,7 +128,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Cantinho  2021</span>
+                        <span>Copyright &copy; Cantinho  2024</span>
                     </div>
                 </div>
             </footer>
