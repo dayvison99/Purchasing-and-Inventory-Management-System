@@ -465,6 +465,94 @@ Conferências Entradas
     }
     ?>
 
+    <!--menu com permissão para supervisores ou pessoas que confere as entradas
+    <?php
+    if ($_SESSION['permissao'] == "mkt"){
+    ?>
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+      <a class="nav-link" href="home.php">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Início</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+<div class="sidebar-heading">
+Lista de Clientes
+</div>
+<li class="nav-item">
+
+  <a class="nav-link" href="listadeclientesposvendas.php">
+    <i class="fas fa-book"></i>
+    <span>Emitir Lista  Clientes</span></a>
+</li>
+<?php
+  if (isset($_SESSION['cidadecliente'])) {
+?>
+<li class="nav-item">
+
+  <a class="nav-link" href="resultadovendasclientes.php">
+    <i class="fa fa-phone-square"></i>
+    <span>Visualizar Lista de Clientes Pós Vendas</span></a>
+</li>
+<?php
+  }
+?>
+<li class="nav-item">
+
+  <a id="linkClientesNovos" class="nav-link" href="resultadonovosclientes.php">
+    <i class="fa fa-user-circle"></i>
+    <span>Visualizar Lista de Clientes Novos</span></a>
+</li>
+<li class="nav-item">
+
+  <a id="linkClientesAniversariantes" class="nav-link" href="resultadoclientesaniversariantes.php">
+    <i class="fa fa-birthday-cake"></i>
+    <span>Visualizar Lista de Clientes Aniversariantes</span></a>
+</li>
+
+<script>
+  // Desativar o link
+  document.getElementById("linkClientesNovos").addEventListener("click", function(event) {
+    event.preventDefault(); // Impede a ação padrão do link
+    alert("Este link está atualmente inativo."); // Você pode exibir uma mensagem ou fazer qualquer outra ação desejada
+  });
+
+  document.getElementById("linkClientesAniversariantes").addEventListener("click", function(event) {
+    event.preventDefault(); // Impede a ação padrão do link
+    alert("Este link está atualmente inativo."); // Você pode exibir uma mensagem ou fazer qualquer outra ação desejada
+  });
+</script>
+
+
+
+
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+
+
+      <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <?php
+  }
+  ?>
+
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 

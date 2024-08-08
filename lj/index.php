@@ -17,22 +17,22 @@
                 echo '<hr>';
                 echo '<h3>Texto em formato Json</h3>';
 
-                print_r($resultprodutos);
+                // print_r($resultprodutosjn);
 
                 echo '<hr>';
                 echo '<h3>Texto decodificado</h3>';
                 // Atribui o conteúdo do resultado para variável $arquivo
-                // $arquivo = $result;
+                $arquivo = $resultprodutosjn;
 
                 // Decodifica o formato JSON e retorna um Objeto
-                // $json = json_decode($arquivo);
+                $json = json_decode($arquivo);
 
                 // Loop para percorrer o Objeto
-                // foreach($json->LJSISTEMAS as $arquivo):
-                //     // echo 'Empresa: ' . $arquivo->EMPRESA.' ';
-                //     echo 'Cod.Produto: ' . $arquivo->CODPRODUTO.' ';
-                //     #echo 'Estoque: ' .$arquivo->ESTOQUE .'<br>';
-                // endforeach;
+                foreach($json->LJSISTEMAS as $arquivo):
+                    // echo 'Empresa: ' . $arquivo->EMPRESA.' ';
+                    echo 'Cod.Produto: ' . $arquivo->CODPRODUTO.' ';
+                    echo 'GRUPO: ' .$arquivo->GRUPO .'<br>';
+                endforeach;
 
                 require_once 'SetStatussf.php';
             } catch (Exception $e) {
